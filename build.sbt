@@ -6,3 +6,5 @@ lazy val root = (project in file("."))
   .settings(
     name := "Tarea Integradora ElPepeInc"
   )
+
+libraryDependencies += "org.scalameta" %% "munit" % "1.0.1" % Test

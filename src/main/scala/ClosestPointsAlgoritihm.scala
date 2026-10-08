@@ -27,16 +27,36 @@ class ClosestPointsAlgoritihm {
 
     }
 
-  def quickSortList(inputList: List[List[Int]], cord:Int): List[List[Int]] =
-    inputList match {
+  def quickSortList(inputList: List[List[Int]], cord:Int): List[List[Int]] = inputList match {
       case Nil => Nil
-      case pivot :: tail => val (minorsList, maxList) = split(tail, pivot, cord, Nil,Nil)
-        appendTR(quickSortList(minorsList,cord), pivot :: quickSortList(maxList,cord))
+      case pivot :: tail => val (minorsList, maxList) = split(tail, pivot, cord, Nil, Nil)
+        appendTR(quickSortList(minorsList, cord), pivot :: quickSortList(maxList, cord))
+  }
+  
+  def distanceTwoPoints(point1: List[Int], point2: List[Int]): Float = {
+    val x = getCord(point1, 0) - getCord(point2, 0)
+    val y = getCord(point1, 1) - getCord(point2, 1)
+    (x * x) + (y * y)
+  }
+  @tailrec
+  final def splitHalf(input:List[List[Int]], n: Int, acc: List[List[Int]]): (List[List[Int]],List[List[Int]]) = input match {
+    case Nil => (acc.reverse,Nil)
+    case head::tail=> if (n==0) (acc.reverse,input)
+    else  splitHalf(tail,n-1,head::acc)
+    
+  }
+  @tailrec
+  final def length(points: List[List[Int]], acc: Int): Int =
+    points match {
+      case Nil => acc
+      case _ :: tail => length(tail, acc + 1)
     }
-   def calculateDistanceLessDistanceTwoPoints(tailX: List [List[Int]], tailY: List[List[Int]]): Float = {(tailX, tailY) match {
+
+  /*def closestPair(input:List[List[Int]]): Float = (input) match {
+      
 
 
     }
 
-
+*/
 }

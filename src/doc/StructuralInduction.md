@@ -35,10 +35,6 @@ En los tres casos, la cabeza $h$ se coloca en el acumulador adecuado y el resto 
 #### Conclusión:
 Por Inducción Estructural, la función partition3 es correcta para cualquier lista finita.
 
-### Complejidad Quicksort3
-
-
-
 ---
 
 ## Problema 3

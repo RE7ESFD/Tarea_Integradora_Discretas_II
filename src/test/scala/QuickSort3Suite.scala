@@ -1,4 +1,4 @@
-class QuickSort3Suite extends munit.FunSuite {
+  class QuickSort3Suite extends munit.FunSuite {
 
   val qs3 = new QuickSort3
   test("concatenar: dos listas vacías") {

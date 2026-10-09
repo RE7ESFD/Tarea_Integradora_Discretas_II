@@ -52,11 +52,24 @@ class ClosestPointsAlgoritihm {
       case _ :: tail => length(tail, acc + 1)
     }
 
-  /*def closestPair(input:List[List[Int]]): Float = (input) match {
-      
-
-
+  @tailrec
+  final def franjaFilter(points: List[List[Int]], midX: Int, d: Int, acc: List[List[Int]]): List[List[Int]] =
+    points match {
+      case Nil => acc.reverse
+      case head :: tail =>
+        val dx = getCord(head, 0) - midX
+        if (dx * dx <= d) franjaFilter(tail, midX, d, head :: acc)
+        else franjaFilter(tail, midX, d, acc)
     }
-
-*/
+  def closestPair(points: List[List[Int]]): List[List[Int]] =
+    points match {
+      case point1 :: point2 :: Nil => List(point1, point2)//case for list 2 points
+      case point1 :: point2 :: point3 :: Nil =>// case 3
+        val pq = distanceTwoPoints(point1, point2)
+        val pr = distanceTwoPoints(point1, point3)
+        val qr = distanceTwoPoints(point2, point3)
+        if (pq <= pr && pq <= qr) List(point1, point2)
+        else if (pr <= qr) List(point1, point3)
+        else List(point2, point3)//falta lo de la franja hacer, ademas comparar
+    }
 }

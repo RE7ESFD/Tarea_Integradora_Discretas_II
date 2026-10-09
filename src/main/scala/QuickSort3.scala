@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 class QuickSort3 {
 
   def concatenar(a: List[Int], b: List[Int]): List[Int] =
@@ -22,7 +24,7 @@ class QuickSort3 {
         }
     }
 
-  def quicksort3(lista: List[Int]): List[Int] =
+  def quicksort3(lista: List[Int]): List[Int] = {
     lista match {
       case Nil => Nil
       case pivote :: resto =>
@@ -38,5 +40,5 @@ class QuickSort3 {
             )
         }
     }
-
+  }
 }
